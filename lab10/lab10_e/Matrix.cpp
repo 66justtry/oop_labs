@@ -52,7 +52,7 @@ int Matrix::GetNumber(int a, int b) {
 }
 
 void Matrix::ChangeNumber(int a, int b, int num) {
-	if ((a <= n) && (b <= m))
+	if ((a < n) && (b < m))
 		this->ptr[a][b] = num;
 }
 
