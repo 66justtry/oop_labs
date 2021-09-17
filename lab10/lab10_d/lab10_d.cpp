@@ -3,6 +3,7 @@
 #include <Windows.h>
 #include <string>
 #include <iomanip>
+#include <fstream>
 
 using namespace std;
 
@@ -54,18 +55,26 @@ int main() {
 	string dest;
 	int num;
 	double time;
+	ifstream in;
+	in.open("txt.txt");
 	for (int i = 0; i < 5; i++) {
-		system("cls");
-		cout << "Enter the information about 5 trains\n\n";
-		cout << "Destination: ";
-		cin >> dest;
-		trains[i].SetDest(dest);
-		cout << "Number: ";
-		cin >> num;
-		trains[i].SetNumber(num);
-		cout << "Time: ";
-		cin >> time;
-		trains[i].SetTime(time);
+		if (in.is_open()) {
+			/*system("cls");
+			cout << "Enter the information about 5 trains\n\n";
+			cout << "Destination: ";
+			cin >> dest;
+			trains[i].SetDest(dest);
+			cout << "Number: ";
+			cin >> num;
+			trains[i].SetNumber(num);
+			cout << "Time: ";
+			cin >> time;
+			trains[i].SetTime(time);*/
+			in >> num >> dest >> time;
+			trains[i].SetNumber(num);
+			trains[i].SetDest(dest);
+			trains[i].SetTime(time);
+		}
 	}
 	trains->SortNumber();
 	menu();

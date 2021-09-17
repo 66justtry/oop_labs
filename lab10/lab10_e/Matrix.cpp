@@ -13,7 +13,7 @@ void Matrix::CreateMatrix(int n, int m) {
 		ptr[i] = new int[m];
 	for (int i = 0; i < n; i++)
 		for (int j = 0; j < m; j++)
-			*(*(ptr + j) + i) = rand() % 10;
+			*(*(ptr + j) + i) = rand() % 100;
 	//this->ptr = MatrRandomInt(ptr, n, m);
 }
 
@@ -21,7 +21,7 @@ void Matrix::ShowMatrix() {
 	system("cls");
 	for (int i = 0; i < n; i++) {
 		for (int j = 0; j < m; j++)
-			cout << setw(3) << *(*(ptr + j) + i);
+			cout << setw(4) << *(*(ptr + j) + i);
 		cout << endl;
 	}
 	system("pause");
