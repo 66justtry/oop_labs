@@ -85,12 +85,10 @@ void Numbers::Generate() {
 }
 
 void Numbers::Show() {
-	cout << endl;
 	for (int i = 0; i < n; i++) {
 		cout << arr[i] << " ";
 	}
-	cout << endl;
-	system("pause");
+	cout << endl << endl;
 }
 
 void Numbers::Union(Numbers obj1, Numbers obj2) {
@@ -109,6 +107,7 @@ void Numbers::Union(Numbers obj1, Numbers obj2) {
 		if (q == false)
 			cout << obj2.arr[i] << " ";
 	}
+	cout << endl;
 }
 
 void Numbers::Crossing(Numbers obj1, Numbers obj2) {
@@ -120,6 +119,7 @@ void Numbers::Crossing(Numbers obj1, Numbers obj2) {
 				break;
 			}
 	}
+	cout << endl;
 }
 
 void Numbers::Difference(Numbers obj1, Numbers obj2) {
@@ -136,6 +136,7 @@ void Numbers::Difference(Numbers obj1, Numbers obj2) {
 		if (q == false)
 			cout << obj1.arr[i] << " ";
 	}
+	cout << endl;
 }
 
 void Numbers::DisSum(Numbers obj1, Numbers obj2) {
@@ -161,4 +162,5 @@ void Numbers::DisSum(Numbers obj1, Numbers obj2) {
 		if (q == false)
 			cout << obj2.arr[i] << " ";
 	}
+	cout << endl;
 }

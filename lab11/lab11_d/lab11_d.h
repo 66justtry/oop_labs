@@ -19,3 +19,5 @@ public:
 	static void Difference(Numbers, Numbers);
 	static void DisSum(Numbers, Numbers);
 };
+
+void Show(Numbers* numbers);

@@ -24,6 +24,7 @@ void menu() {
 		system("cls");
 		int* arr = matr.FindMin();
 		cout << "Position of minimal element: " << arr[0] << " " << arr[1] << endl;
+		delete[] arr;
 		system("pause");
 	}
 	else if (ch == 3) {
