@@ -24,11 +24,25 @@ public:
 	friend void DataIn(Project*);
 	friend void Show(Project*);
 	Project operator = (const Project&);
+	Project operator () (int, string, int, int);
+	char operator [] (int);
+	friend Project operator+ (const Project& obj1, const Project& obj2);
+	friend bool operator== (const Project& obj1, const Project& obj2);
+	friend ostream& operator<< (ostream& out, const Project& obj);
+	friend istream& operator>> (istream& in, Project& obj);
+	/*
 	Project operator + (const Project&);
 	bool operator == (const Project&);
 	bool operator != (const Project&);
 	void operator >> (Project*);
 	void operator << (Project*);
+	*/
 };
 
 void ShowHeader();
+
+void Show(Project*);
+
+void DataIn(Project*);
+
+void menu(Project*);

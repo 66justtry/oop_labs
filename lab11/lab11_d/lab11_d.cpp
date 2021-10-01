@@ -122,7 +122,7 @@ int main() {
 	menu(numbers);
 
 
-
+	delete[] numbers;
 	system("pause");
 	return 0;
 }
