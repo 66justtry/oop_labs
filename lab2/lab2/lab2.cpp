@@ -74,9 +74,10 @@ void menu(Project* project) {
 	cout << "\n\n1 - Create a copy of a line\n";
 	cout << "2 - Add a line to another one\n";
 	cout << "3 - Compare 2 lines\n";
-	cout << "4 - Change a line\n";
-	cout << "5 - Get a symbol from name\n";
-	cout << "6 - Exit\n";
+	cout << "4 - Change a line (operator >> )\n";
+	cout << "5 - Change a line (operator () )\n";
+	cout << "6 - Get a symbol from name\n";
+	cout << "7 - Exit\n";
 	cin >> ch;
 	if (ch == 1) {
 		int x, y;
@@ -113,9 +114,18 @@ void menu(Project* project) {
 	}
 	else if (ch == 4) {
 		int x;
+		cout << "line: ";
+		cin >> x;
+		x--;
+		cout << "Enter year, name, diameter, frequency:\n";
+		cin >> project[x];
+		//project[x](year, name, diameter, frequency);
+	}
+	else if (ch == 5) {
+		int x;
 		int year, diameter, frequency;
 		string name;
-		cout << "line: ";
+		cout << "\nline: ";
 		cin >> x;
 		x--;
 		cout << "year: ";
@@ -128,7 +138,7 @@ void menu(Project* project) {
 		cin >> frequency;
 		project[x](year, name, diameter, frequency);
 	}
-	else if (ch == 5) {
+	else if (ch == 6) {
 		int x, y;
 		cout << "line: ";
 		cin >> x;
@@ -138,7 +148,7 @@ void menu(Project* project) {
 		y--;
 		cout << endl << project[x][y] << endl;
 	}
-	else if (ch == 6)
+	else if (ch == 7)
 		exit(0);
 	system("pause");
 	menu(project);
