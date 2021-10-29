@@ -1,0 +1,6 @@
+Ivanov 34 math 1
+Morozov 55 physics 2
+Volkov 43 zav_kafedry
+Bykova 20 3 3 4 5 2
+Falko 19 5 5 5 4 5
+Konev 18 4 3 5 2 5

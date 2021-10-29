@@ -31,7 +31,9 @@ public:
 };
 
 int main() {
-	Library book1("Star Wars", "J.Laker", 500, 102344, true);
-	Library book2("Witcher", "I.Zhavets", 218, 2237684, true);
-	Library book3("LoTR", "J.Tolkien", 467, 125630, false);
+	Library* temp = new Library;
+	Library* books = new Library[3];
+	Library books[0] = ("Star Wars", "J.Laker", 500, 102344, true);
+	Library books[1] = ("Witcher", "I.Zhavets", 218, 2237684, true);
+	Library books[2] = ("LoTR", "J.Tolkien", 467, 125630, false);
 }
