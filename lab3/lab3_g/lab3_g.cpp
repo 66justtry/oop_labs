@@ -40,12 +40,23 @@ public:
 };
 
 int main() {
+	cout << "Using of objects\n\n";
 	A1 obj1(4, 5);
 	obj1.Show();
 	A2 obj2(3, 4);
 	obj2.Show();
 	A3 obj3(1);
 	obj3.Show();
+	cout << "\nUsing of Base class pointer\n\n";
+	Figure* ptr = &obj1;
+	ptr->Set(6, 7);
+	ptr->Show();
+	ptr = &obj2;
+	ptr->Set(8, 4);
+	ptr->Show();
+	ptr = &obj3;
+	ptr->Set(2, 0);
+	ptr->Show();
 	system("pause");
 	return 0;
 }
