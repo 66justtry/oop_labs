@@ -1,6 +1,5 @@
 #pragma once
 #include <string>
-#define N 5
 
 using namespace std;
 
@@ -21,8 +20,6 @@ public:
 	string GetName();
 	int GetDiameter();
 	int GetFrequency();
-	friend void DataIn(Project*);
-	friend void Show(Project*);
 	Project operator = (const Project&);
 	Project operator () (int, string, int, int);
 	char operator [] (int);
@@ -30,19 +27,22 @@ public:
 	friend bool operator== (const Project& obj1, const Project& obj2);
 	friend ostream& operator<< (ostream& out, const Project& obj);
 	friend istream& operator>> (istream& in, Project& obj);
+	friend class DB;
 };
 
 class DB {
-private:
+public:
 	Project* ptr;
 	bool sorted;
+	int n;
 public:
+	DB();
 	void DataIn();
 	void Show();
 	void Sort();
 	void Delete();
-	void Add();
+	void Add(int, string, int, int);
 	friend class Project;
 };
 
-void menu(Project*);
+void menu(DB*);

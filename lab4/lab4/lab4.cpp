@@ -8,9 +8,11 @@ using namespace std;
 
 int main() {
 	DB* database = new DB;
-	menu(project);
+	database->DataIn();
+	menu(database);
 	system("pause");
-	delete[] project;
+	delete[] database->ptr;
+	delete database;
 }
 
 Project operator+ (const Project& obj1, const Project& obj2) {
@@ -42,18 +44,20 @@ istream& operator>> (istream& in, Project& obj) {
 	return in;
 }
 
-void menu(Project* project) {
+void menu(DB* database) {
 	int ch;
 	system("cls");
-	ShowHeader();
-	Show(project);
+	database->Show();
 	cout << "\n\n1 - Create a copy of a line\n";
 	cout << "2 - Add a line to another one\n";
 	cout << "3 - Compare 2 lines\n";
 	cout << "4 - Change a line (operator >> )\n";
 	cout << "5 - Change a line (operator () )\n";
 	cout << "6 - Get a symbol from name\n";
-	cout << "7 - Exit\n";
+	cout << "7 - Sort\n";
+	cout << "8 - Add a line\n";
+	cout << "9 - Delete a line\n";
+	cout << "10 - Exit\n";
 	cin >> ch;
 	if (ch == 1) {
 		int x, y;
@@ -63,7 +67,7 @@ void menu(Project* project) {
 		cin >> y;
 		x--;
 		y--;
-		project[x] = project[y];
+		database->ptr[x] = database->ptr[y];
 	}
 	else if (ch == 2) {
 		int x, y;
@@ -73,7 +77,7 @@ void menu(Project* project) {
 		cin >> y;
 		x--;
 		y--;
-		project[x] = project[x] + project[y];
+		database->ptr[x] = database->ptr[x] + database->ptr[y];
 	}
 	else if (ch == 3) {
 		int x, y;
@@ -83,7 +87,7 @@ void menu(Project* project) {
 		cin >> y;
 		x--;
 		y--;
-		if (project[x] == project[y])
+		if (database->ptr[x] == database->ptr[y])
 			cout << "line 1 == line 2\n";
 		else
 			cout << "line 1 != line 2\n";
@@ -94,8 +98,7 @@ void menu(Project* project) {
 		cin >> x;
 		x--;
 		cout << "Enter year, name, diameter, frequency:\n";
-		cin >> project[x];
-		//project[x](year, name, diameter, frequency);
+		cin >> database->ptr[x];
 	}
 	else if (ch == 5) {
 		int x;
@@ -112,7 +115,7 @@ void menu(Project* project) {
 		cin >> diameter;
 		cout << "frequency: ";
 		cin >> frequency;
-		project[x](year, name, diameter, frequency);
+		database->ptr[x](year, name, diameter, frequency);
 	}
 	else if (ch == 6) {
 		int x, y;
@@ -122,10 +125,30 @@ void menu(Project* project) {
 		cout << "number of symbol in string: ";
 		cin >> y;
 		y--;
-		cout << endl << project[x][y] << endl;
+		cout << endl << database->ptr[x][y] << endl;
 	}
-	else if (ch == 7)
+	else if (ch == 7) {
+		database->Sort();
+	}
+	else if (ch == 8) {
+		cout << "\n\n";
+		int year, diameter, frequency;
+		string name;
+		cout << "year: ";
+		cin >> year;
+		cout << "name: ";
+		cin >> name;
+		cout << "diameter: ";
+		cin >> diameter;
+		cout << "frequency: ";
+		cin >> frequency;
+		database->Add(year, name, diameter, frequency);
+	}
+	else if (ch == 9) {
+		database->Delete();
+	}
+	else if (ch == 10)
 		exit(0);
 	system("pause");
-	menu(project);
+	menu(database);
 }
