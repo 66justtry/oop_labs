@@ -51,7 +51,7 @@ void DB::Add(int year, string name, int diameter, int frequency) {
 }
 
 void DB::Delete() {
-	if (n = 0)
+	if (n == 0)
 		return;
 	Project* temp = new Project[n - 1];
 	for (int i = 0; i < (n - 1); i++)
