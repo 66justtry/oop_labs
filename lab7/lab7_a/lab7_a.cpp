@@ -21,8 +21,13 @@ public:
 int main() {
 	srand(time(NULL));
 	double* arr = new double[10];
+	int x;
+	double y;
 	for (int i = 0; i < 10; i++) {
-		arr[i] = ((rand() % 20) + (rand() % 100) / 100);
+		x = rand() % 20;
+		y = rand() % 100;
+		y = y / 100;
+		arr[i] = x + y;
 		cout << arr[i] << endl;
 	}
 	cout << "\n\n";
