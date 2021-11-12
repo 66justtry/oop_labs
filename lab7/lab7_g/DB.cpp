@@ -49,7 +49,7 @@ void DB::SaveToFile(string file, Project& obj) {
 		ofstream out(file, ios::app | ios::ate);
 		if (!out.is_open())
 			throw "Can't open this file!";
-		out << obj.year << " " << obj.name << " " << obj.diameter << " " << obj.frequency << endl;
+		out << endl << obj.year << " " << obj.name << " " << obj.diameter << " " << obj.frequency;
 		out.close();
 	}
 	catch (string msg) {
@@ -84,7 +84,9 @@ void DB::SaveToFileAll(string file) {
 		cout << msg << endl;
 	}
 	for (int i = 0; i < n; i++) {
-		out << database[i].year << " " << database[i].name << " " << database[i].diameter << " " << database[i].frequency << endl;
+		out << database[i].year << " " << database[i].name << " " << database[i].diameter << " " << database[i].frequency;
+		if (i != n - 1)
+			out << endl;
 	}
 	out.close();
 }
@@ -112,10 +114,11 @@ void DB::ReadFromFileAll(string file) {
 		in.close();
 		return;
 	}
-	if (file == "default.txt")
+	/*if (file == "default.txt")
 		n = num;
 	else if (file == "text.txt")
-		n = num - 1;
+		n = num - 1;*/
+	n = num;
 	delete[] database;
 	database = new Project[n];
 	in.seekg(0, ios::beg);

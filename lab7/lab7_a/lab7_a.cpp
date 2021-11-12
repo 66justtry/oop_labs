@@ -40,6 +40,7 @@ int main() {
 	for (int i = 0; i < 5; i += 2) {
 		in.read((char*)&temp1, sizeof(double));
 		in.read((char*)&temp2, sizeof(double));
+		cout << temp1 << " " << temp2 << endl;
 		numbers[i].Set(temp1, temp2);
 	}
 	in.close();
