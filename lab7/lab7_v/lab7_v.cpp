@@ -20,21 +20,31 @@ int main() {
 	in >> num;
 	num = arr[4];
 	in.close();
-	if (num % 2 == 0) {
-		out.open("text.txt");
-		for (int i = 0; i < 4; i++)
-			out << 77 << " ";
-		for (int i = 4; i < 10; i++)
-			out << arr[i] << " ";
-		out.close();
+	try {
+		if (num % 2 == 0) {
+			out.open("text.txt");
+			if (!out.is_open())
+				throw 1;
+			for (int i = 0; i < 4; i++)
+				out << 77 << " ";
+			for (int i = 4; i < 10; i++)
+				out << arr[i] << " ";
+			out.close();
+		}
+		else {
+			out.open("text.txt");
+			if (!out.is_open())
+				throw 1;
+			for (int i = 0; i < 5; i++)
+				out << arr[i] << " ";
+			for (int i = 0; i < 5; i++)
+				out << 88 << " ";
+			out.close();
+		}
 	}
-	else {
-		out.open("text.txt");
-		for (int i = 0; i < 5; i++)
-			out << arr[i] << " ";
-		for (int i = 0; i < 5; i++)
-			out << 88 << " ";
-		out.close();
+	catch (int) {
+		cout << "Error!\n";
+		return 1;
 	}
 	in.open("text.txt");
 	for (int i = 0; i < 10; i++)

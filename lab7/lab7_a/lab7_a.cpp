@@ -38,16 +38,24 @@ int main() {
 		in.write((char*)&arr[i], sizeof(double));
 	}
 	in.close();
-	in.open("in.txt", ios::binary | ios::in);
-	double temp1, temp2;
 	Comp* numbers = new Comp[5];
-	for (int i = 0; i < 5; i += 2) {
-		in.read((char*)&temp1, sizeof(double));
-		in.read((char*)&temp2, sizeof(double));
-		//cout << temp1 << " " << temp2 << endl;
-		numbers[i].Set(temp1, temp2);
+	try {
+		in.open("in.txt", ios::binary | ios::in);
+		if (!in.is_open())
+			throw 1;
+		double temp1, temp2;
+		for (int i = 0; i < 5; i += 2) {
+			in.read((char*)&temp1, sizeof(double));
+			in.read((char*)&temp2, sizeof(double));
+			//cout << temp1 << " " << temp2 << endl;
+			numbers[i].Set(temp1, temp2);
+		}
+		in.close();
 	}
-	in.close();
+	catch (int) {
+		cout << "Error!\n";
+		return 1;
+	}
 	for (int i = 0; i < 5; i++)
 		numbers[i].Set(arr[2 * i], arr[2 * i + 1]);
 	for (int i = 0; i < 5; i++)
