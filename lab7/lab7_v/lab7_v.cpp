@@ -10,35 +10,40 @@ int main() {
 		arr[i] = rand() % 100;
 		cout << arr[i] << " ";
 	}
-	ofstream out("text.txt", ios::binary);
+	ofstream out("text.txt");
 	for (int i = 0; i < 10; i++)
-		out << arr[i];
+		out << arr[i] << " ";
 	out.close();
-	ifstream in("text.txt", ios::binary);
-	in.seekg(3 * sizeof(int), ios::beg);
 	int num;
+	ifstream in("text.txt");
+	in.seekg(3 * sizeof(int), ios::beg);
 	in >> num;
+	num = arr[4];
 	in.close();
 	if (num % 2 == 0) {
-		out.open("text.txt", ios::binary);
+		out.open("text.txt");
 		for (int i = 0; i < 4; i++)
-			out.write((char*)(77), sizeof(int));
+			out << 77 << " ";
+		for (int i = 4; i < 10; i++)
+			out << arr[i] << " ";
 		out.close();
 	}
 	else {
-		out.open("text.txt", ios::binary);
-		out.seekp(4 * sizeof(int), ios::beg);
+		out.open("text.txt");
 		for (int i = 0; i < 5; i++)
-			out.write((char*)(88), sizeof(int));
+			out << arr[i] << " ";
+		for (int i = 0; i < 5; i++)
+			out << 88 << " ";
 		out.close();
 	}
-	in.open("text.txt", ios::binary);
+	in.open("text.txt");
 	for (int i = 0; i < 10; i++)
 		in >> arr[i];
 	in.close();
 	cout << "\n\n";
 	for (int i = 0; i < 10; i++)
 		cout << arr[i] << " ";
+	cout << "\n\n";
 	delete[] arr;
 	system("pause");
 	return 0;

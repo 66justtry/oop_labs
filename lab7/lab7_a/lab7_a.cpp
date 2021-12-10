@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <time.h>
+#include <iomanip>
 
 using namespace std;
 
@@ -14,7 +15,7 @@ public:
 		num2 = y;
 	}
 	void Show() {
-		cout << fixed << num1 << " + " << num2 << " *i\n";
+		cout << fixed << setprecision(2) << num1 << " + " << num2 << "*i\n";
 	}
 };
 
@@ -32,7 +33,10 @@ int main() {
 	}
 	cout << "\n\n";
 	fstream in("in.txt", ios::binary | ios::out);
-	in.write((char*)arr, sizeof(arr));
+	for (int i = 0; i < 10; i++) {
+		double q = arr[i];
+		in.write((char*)&arr[i], sizeof(double));
+	}
 	in.close();
 	in.open("in.txt", ios::binary | ios::in);
 	double temp1, temp2;
@@ -40,10 +44,12 @@ int main() {
 	for (int i = 0; i < 5; i += 2) {
 		in.read((char*)&temp1, sizeof(double));
 		in.read((char*)&temp2, sizeof(double));
-		cout << temp1 << " " << temp2 << endl;
+		//cout << temp1 << " " << temp2 << endl;
 		numbers[i].Set(temp1, temp2);
 	}
 	in.close();
+	for (int i = 0; i < 5; i++)
+		numbers[i].Set(arr[2 * i], arr[2 * i + 1]);
 	for (int i = 0; i < 5; i++)
 		numbers[i].Show();
 	ofstream out("out.txt", ios::binary);
